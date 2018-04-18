@@ -34,7 +34,7 @@ describe("Animals", () => {
             .expect(200)
             .end((err, res) => {
                 if (err) throw err
-                expect(res.body).to.equal([])
+                expect(res.body.length).to.equal(0)
             })
         done()
     })
