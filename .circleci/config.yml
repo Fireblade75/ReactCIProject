@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  build:
+  build-job:
     docker:
       # specify the version you desire here
       - image: circleci/node:7.10
@@ -36,7 +36,7 @@ jobs:
       # run tests!
       - run: yarn test
   
-  deploy:
+  deploy-job:
     machine:
         enabled: true
     working_directory: ~/react-ci-project
@@ -60,7 +60,7 @@ workflows:
   build-deploy:
     jobs:
       - build-job
-      - deploy-jobs:  # only deploy when master successfully builds
+      - deploy-job:  # only deploy when master successfully builds
           requires:
             - build-job
           filters:
